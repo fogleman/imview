@@ -15,6 +15,8 @@ Simple image viewer written in Go + OpenGL.
 You can show a single image...
 
 ```go
+import "github.com/fogleman/imview"
+
 var image *image.RGBA
 // ...
 imview.Show(image)
@@ -23,6 +25,8 @@ imview.Show(image)
 Or multiple images, each in their own window...
 
 ```go
+import "github.com/fogleman/imview"
+
 var images []*image.RGBA
 // ...
 imview.Show(images...)
