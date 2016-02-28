@@ -2,6 +2,10 @@
 
 Simple image viewer written in Go + OpenGL.
 
+## Installation
+
+    go get -u github.com/fogleman/imview/cmd/imview
+
 ## Usage
 
     imview first.jpg second.png third.bmp
