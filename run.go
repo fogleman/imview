@@ -12,7 +12,7 @@ func init() {
 	runtime.LockOSThread()
 }
 
-func Show(images []*image.RGBA) error {
+func Show(images ...*image.RGBA) error {
 	if err := gl.Init(); err != nil {
 		return err
 	}

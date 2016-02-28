@@ -9,7 +9,7 @@ import (
 
 func main() {
 	images := LoadImages(os.Args[1:])
-	imview.Show(images)
+	imview.Show(images...)
 }
 
 func LoadImages(paths []string) []*image.RGBA {
