@@ -9,11 +9,11 @@ import (
 
 type Window struct {
 	*glfw.Window
-	Image   *image.RGBA
+	Image   image.Image
 	Texture *Texture
 }
 
-func NewWindow(im *image.RGBA) (*Window, error) {
+func NewWindow(im image.Image) (*Window, error) {
 	const maxSize = 1200
 	w := im.Bounds().Size().X
 	h := im.Bounds().Size().Y
@@ -45,6 +45,12 @@ func NewWindow(im *image.RGBA) (*Window, error) {
 	result := &Window{window, im, texture}
 	result.SetRefreshCallback(result.onRefresh)
 	return result, nil
+}
+
+func (window *Window) SetImage(im image.Image) {
+	window.Image = im
+	window.Texture.SetImage(im)
+	window.Draw()
 }
 
 func (window *Window) onRefresh(x *glfw.Window) {

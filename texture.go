@@ -2,6 +2,7 @@ package imview
 
 import (
 	"image"
+	"image/draw"
 
 	"github.com/go-gl/gl/v2.1/gl"
 )
@@ -25,7 +26,13 @@ func (t *Texture) Bind() {
 	gl.BindTexture(gl.TEXTURE_2D, t.Handle)
 }
 
-func (t *Texture) SetImage(im *image.RGBA) {
+func (t *Texture) SetImage(im image.Image) {
+	rgba := image.NewRGBA(im.Bounds())
+	draw.Draw(rgba, rgba.Rect, im, image.ZP, draw.Src)
+	t.SetRGBA(rgba)
+}
+
+func (t *Texture) SetRGBA(im *image.RGBA) {
 	t.Bind()
 	size := im.Rect.Size()
 	gl.TexImage2D(
